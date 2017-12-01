@@ -32,3 +32,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+/LD40/Library
+/LD40/obj/Debug
+/LD40/Temp
+/LD40/UnityPackageManager
