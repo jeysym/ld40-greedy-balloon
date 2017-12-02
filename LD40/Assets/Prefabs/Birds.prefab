@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4589231954118456}
-  - component: {fileID: 114685105664241182}
+  - component: {fileID: 114126650001666206}
   m_Layer: 0
   m_Name: Birds
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114685105664241182
+--- !u!114 &114126650001666206
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,12 +48,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1821986026027972}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1502befd7c242340955d859ce6969d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 39124862204b0094b91ff7b40e37c286, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Top: 6
   Bottom: -1
   RightEdge: 23
-  SpawnTime: 1
-  Bird: {fileID: 0}
+  SpawnTime: 0.5
+  Target: {fileID: 0}
   Balloon: {fileID: 0}

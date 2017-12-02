@@ -328,6 +328,16 @@ Prefab:
       propertyPath: Balloon
       value: 
       objectReference: {fileID: 1412619940}
+    - target: {fileID: 114126650001666206, guid: 1a9f0aa39618b484ea2e2aef2020a609,
+        type: 2}
+      propertyPath: Target
+      value: 
+      objectReference: {fileID: 845850597}
+    - target: {fileID: 114126650001666206, guid: 1a9f0aa39618b484ea2e2aef2020a609,
+        type: 2}
+      propertyPath: Balloon
+      value: 
+      objectReference: {fileID: 1412619940}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1a9f0aa39618b484ea2e2aef2020a609, type: 2}
   m_IsPrefabParent: 0

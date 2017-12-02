@@ -398,12 +398,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 114685105664241182, guid: 1a9f0aa39618b484ea2e2aef2020a609,
+    - target: {fileID: 114126650001666206, guid: 1a9f0aa39618b484ea2e2aef2020a609,
         type: 2}
-      propertyPath: Bird
+      propertyPath: Target
       value: 
       objectReference: {fileID: 17448361}
-    - target: {fileID: 114685105664241182, guid: 1a9f0aa39618b484ea2e2aef2020a609,
+    - target: {fileID: 114126650001666206, guid: 1a9f0aa39618b484ea2e2aef2020a609,
         type: 2}
       propertyPath: Balloon
       value: 
