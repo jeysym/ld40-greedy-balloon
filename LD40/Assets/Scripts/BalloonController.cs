@@ -18,29 +18,34 @@ public class BalloonController : MonoBehaviour {
     public int health = 100;
     public int goldBars = 0;
 
-    public float goldenBarSlowdown; 
+    public float goldBarMass; 
 	public float hSpeed;
 	public float vSpeed;
 
     private bool xWasDown = false;
     private Rigidbody2D rb;
+	private PolygonCollider2D pcol;
+	private Rigidbody2D[] rbs;
+	private PolygonCollider2D[] pcols;
 
     // Use this for initialization
     void Start () {
 		rb = GetComponent<Rigidbody2D>();
-        
+		pcol = GetComponent<PolygonCollider2D> ();
+		rbs = gameObject.GetComponentsInChildren<Rigidbody2D> ();
+		pcols = gameObject.GetComponentsInChildren<PolygonCollider2D>();
+		rb.mass = 1.0f;
 	}
 
 	// Update is called once per frame
 	void Update () {
         hpCountText.text = "" + health;
         goldBarCountText.text = "" + goldBars;
-
 		float hAxis = Input.GetAxis("Horizontal");
 		float burn = Input.GetAxis("Burn");
         bool xDown = Input.GetKey(KeyCode.X);
 
-        float maxVForce = vSpeed + (1 - goldenBarSlowdown) * (float)goldBars;
+        float maxVForce = vSpeed;
         float maxHForce = hSpeed * hAxis;
 
 		if (burn > 0)
@@ -55,6 +60,7 @@ public class BalloonController : MonoBehaviour {
             if (goldBars > 0)
             {
                 goldBars--;
+				rb.mass -= goldBarMass;
                 Transform fallingInstance = Instantiate(fallingObject, fallingObjectSpawnLocation.position, Quaternion.identity);
                 Rigidbody2D fRB = fallingInstance.GetComponent<Rigidbody2D>();
                 if (fRB != null)
@@ -71,7 +77,8 @@ public class BalloonController : MonoBehaviour {
         if (health == 0)
         {
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
-            health--;
+			Death();
+			// do not forget to make health 100 once again
         }
     }
 
@@ -81,6 +88,7 @@ public class BalloonController : MonoBehaviour {
         {
             other.gameObject.SetActive(false);
             goldBars++;
+			rb.mass += goldBarMass;
         }
     }
 
@@ -90,6 +98,7 @@ public class BalloonController : MonoBehaviour {
         {
             other.gameObject.SetActive(false);
             goldBars++;
+			rb.mass += goldBarMass;
         }
         else if (other.gameObject.tag == "Mountain")
         {
@@ -100,4 +109,17 @@ public class BalloonController : MonoBehaviour {
             health -= 10;
         }
     }
+
+	void Death()
+	{
+		rb.simulated = false;
+		pcol.enabled = false;
+		foreach (var item in pcols) {
+			item.enabled = true;			
+		}
+		foreach (var item in rbs) {
+			item.simulated = true;
+		}
+	}
+		
 }
