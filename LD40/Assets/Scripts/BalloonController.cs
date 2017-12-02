@@ -8,8 +8,12 @@ public class BalloonController : MonoBehaviour {
     public Text hpCountText;
     public Text goldBarCountText;
 
+    public Transform explosionEffect;
+
     public Transform fallingObjectSpawnLocation;
     public Transform fallingObject;
+    public float fallingObjectThrow;
+    public float fallingObjectTorque;
 
     public int health = 100;
     public int goldBars = 0;
@@ -51,13 +55,25 @@ public class BalloonController : MonoBehaviour {
             if (goldBars > 0)
             {
                 goldBars--;
-                Instantiate(fallingObject, fallingObjectSpawnLocation.position, Quaternion.identity);
+                Transform fallingInstance = Instantiate(fallingObject, fallingObjectSpawnLocation.position, Quaternion.identity);
+                Rigidbody2D fRB = fallingInstance.GetComponent<Rigidbody2D>();
+                if (fRB != null)
+                {
+                    fRB.AddForce(new Vector2(-fallingObjectThrow, 0.0f));
+                    fRB.AddTorque(fallingObjectTorque);
+                }
             }
         }
         
         if (xDown == false)
             xWasDown = false;
-	}
+
+        if (health == 0)
+        {
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            health--;
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
