@@ -65,7 +65,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1098939806035932}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.11, y: 3.59, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4109076315588252}
@@ -230,10 +230,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50cad9be5781c2648b571e9dff724edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpCountText: {fileID: 0}
+  goldBarCountText: {fileID: 0}
   fallingObjectSpawnLocation: {fileID: 4109076315588252}
   fallingObject: {fileID: 4794192073665460, guid: 0ef1e52d87dab06409878a5c21a7dade,
     type: 2}
-  goldBarCount: 0
+  health: 100
+  goldBars: 0
   goldenBarSlowdown: 3
   hSpeed: 8
   vSpeed: 15
