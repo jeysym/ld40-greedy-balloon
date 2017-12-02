@@ -6,6 +6,9 @@ public class BalloonController : MonoBehaviour {
 
 	private Rigidbody2D rb;
 
+    public Transform fallingObjectSpawnLocation;
+    public Transform fallingObject;
+
     public int goldBarCount = 0;
 
     public float goldenBarSlowdown; 
@@ -17,6 +20,7 @@ public class BalloonController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D>();
+        
 	}
 
 	// Update is called once per frame
@@ -38,7 +42,10 @@ public class BalloonController : MonoBehaviour {
         {
             xWasDown = true;
             if (goldBarCount > 0)
+            {
                 goldBarCount--;
+                Instantiate(fallingObject, fallingObjectSpawnLocation.position, Quaternion.identity);
+            }
         }
         
         if (xDown == false)
@@ -48,6 +55,15 @@ public class BalloonController : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("GoldenBar"))
+        {
+            other.gameObject.SetActive(false);
+            goldBarCount++;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "GoldenBar")
         {
             other.gameObject.SetActive(false);
             goldBarCount++;
