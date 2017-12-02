@@ -24,18 +24,23 @@ public class BalloonController : MonoBehaviour {
 
     private bool xWasDown = false;
     private Rigidbody2D rb;
+	private PolygonCollider2D pcol;
+	private Rigidbody2D[] rbs;
+	private PolygonCollider2D[] pcols;
 
     // Use this for initialization
     void Start () {
 		rb = GetComponent<Rigidbody2D>();
+		pcol = GetComponent<PolygonCollider2D> ();
+		rbs = gameObject.GetComponentsInChildren<Rigidbody2D> ();
+		pcols = gameObject.GetComponentsInChildren<PolygonCollider2D>();
 		rb.mass = 1.0f;
 	}
 
 	// Update is called once per frame
 	void Update () {
         hpCountText.text = "" + health;
-        //goldBarCountText.text = "" + goldBars;
-		goldBarCountText.text = "" + rb.mass.ToString();
+        goldBarCountText.text = "" + goldBars;
 		float hAxis = Input.GetAxis("Horizontal");
 		float burn = Input.GetAxis("Burn");
         bool xDown = Input.GetKey(KeyCode.X);
@@ -72,7 +77,8 @@ public class BalloonController : MonoBehaviour {
         if (health == 0)
         {
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
-            health--;
+			Death();
+			// do not forget to make health 100 once again
         }
     }
 
@@ -103,4 +109,17 @@ public class BalloonController : MonoBehaviour {
             health -= 10;
         }
     }
+
+	void Death()
+	{
+		rb.simulated = false;
+		pcol.enabled = false;
+		foreach (var item in pcols) {
+			item.enabled = true;			
+		}
+		foreach (var item in rbs) {
+			item.simulated = true;
+		}
+	}
+		
 }
