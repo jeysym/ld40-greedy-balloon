@@ -22,13 +22,13 @@ public class BalloonController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		float hAxis = Input.GetAxis("Horizontal");
-		bool spaceDown = Input.GetKey(KeyCode.Space);
+		float burn = Input.GetAxis("Burn");
         bool xDown = Input.GetKey(KeyCode.X);
 
         float maxVForce = vSpeed + (1 - goldenBarSlowdown) * (float)goldBarCount;
         float maxHForce = hSpeed * hAxis;
 
-		if (spaceDown)
+		if (burn > 0)
 		{
 			rb.AddForce(new Vector2(0.0f, 1.0f) * maxVForce);
 		}
