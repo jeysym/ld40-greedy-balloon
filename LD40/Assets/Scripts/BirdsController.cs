@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BirdsController : MonoBehaviour {
 
-	public float Bottom;
 	public float Top;
+	public float Bottom;
 	public float RightEdge;
 	public float SpawnTime;
 	public GameObject Bird;

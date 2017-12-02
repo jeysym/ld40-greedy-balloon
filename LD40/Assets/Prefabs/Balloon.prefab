@@ -232,9 +232,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpCountText: {fileID: 0}
   goldBarCountText: {fileID: 0}
+  explosionEffect: {fileID: 0}
   fallingObjectSpawnLocation: {fileID: 4109076315588252}
   fallingObject: {fileID: 4794192073665460, guid: 0ef1e52d87dab06409878a5c21a7dade,
     type: 2}
+  fallingObjectThrow: 20
+  fallingObjectTorque: 80
   health: 100
   goldBars: 0
   goldenBarSlowdown: 3
