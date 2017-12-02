@@ -26,25 +26,25 @@ public class CameraController : MonoBehaviour {
         wall.transform.position = transform.position - new Vector3(cameraHalfwidth, 0.0f);
     }
 
-    void OnDrawGizmos()
-    {
-        Vector3 cameraCenter = transform.position;
+    //void OnDrawGizmos()
+    //{
+    //    Vector3 cameraCenter = transform.position;
 
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(transform.position, transform.position - new Vector3(cameraHalfwidth, 0.0f));
+    //    Gizmos.color = Color.blue;
+    //    Gizmos.DrawLine(transform.position, transform.position - new Vector3(cameraHalfwidth, 0.0f));
 
-        float yCameraTop = transform.position.y + cameraComponent.orthographicSize;
-        float yCameraBottom = transform.position.y - cameraComponent.orthographicSize;
+    //    float yCameraTop = transform.position.y + cameraComponent.orthographicSize;
+    //    float yCameraBottom = transform.position.y - cameraComponent.orthographicSize;
 
-        float yTopThreshold = yCameraTop - (chaseV * 2 * cameraComponent.orthographicSize);
-        float yBottomThreshold = yCameraBottom + (chaseV * 2 * cameraComponent.orthographicSize);
+    //    float yTopThreshold = yCameraTop - (chaseV * 2 * cameraComponent.orthographicSize);
+    //    float yBottomThreshold = yCameraBottom + (chaseV * 2 * cameraComponent.orthographicSize);
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, yTopThreshold));
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, yTopThreshold));
 
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, yBottomThreshold));
-    }
+    //    Gizmos.color = Color.magenta;
+    //    Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, yBottomThreshold));
+    //}
 
 	// LateUpdate is called after Update each frame
 	void LateUpdate () 

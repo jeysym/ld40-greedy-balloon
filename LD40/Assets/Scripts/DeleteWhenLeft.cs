@@ -13,8 +13,11 @@ public class DeleteWhenLeft : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (transform.position.z == -1)
+            return;
+
         float deltaX = transform.position.x - wallOfDeath.transform.position.x;
-        if (deltaX < -10)
+        if (deltaX < -80)
         {
             Destroy(gameObject);
         }
