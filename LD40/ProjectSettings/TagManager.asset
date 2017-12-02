@@ -44,3 +44,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Back ropes
+    uniqueID: 3641478315
+    locked: 0
+  - name: Balloon of the balloon
+    uniqueID: 1392372467
+    locked: 0
+  - name: Front ropes
+    uniqueID: 3823775789
+    locked: 0
+  - name: Basket
+    uniqueID: 1054912019
+    locked: 0
