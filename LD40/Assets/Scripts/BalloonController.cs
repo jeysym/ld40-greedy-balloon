@@ -95,5 +95,9 @@ public class BalloonController : MonoBehaviour {
         {
             health -= 20;
         }
+        else if (other.gameObject.tag == "Bird")
+        {
+            health -= 10;
+        }
     }
 }
