@@ -1,35 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BalloonController : MonoBehaviour {
 
-	private Rigidbody2D rb;
+    public Text hpCountText;
+    public Text goldBarCountText;
 
     public Transform fallingObjectSpawnLocation;
     public Transform fallingObject;
 
-    public int goldBarCount = 0;
+    public int health = 100;
+    public int goldBars = 0;
 
     public float goldenBarSlowdown; 
 	public float hSpeed;
 	public float vSpeed;
 
     private bool xWasDown = false;
+    private Rigidbody2D rb;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		rb = GetComponent<Rigidbody2D>();
         
 	}
 
 	// Update is called once per frame
 	void Update () {
+        hpCountText.text = "" + health;
+        goldBarCountText.text = "" + goldBars;
+
 		float hAxis = Input.GetAxis("Horizontal");
 		float burn = Input.GetAxis("Burn");
         bool xDown = Input.GetKey(KeyCode.X);
 
-        float maxVForce = vSpeed + (1 - goldenBarSlowdown) * (float)goldBarCount;
+        float maxVForce = vSpeed + (1 - goldenBarSlowdown) * (float)goldBars;
         float maxHForce = hSpeed * hAxis;
 
 		if (burn > 0)
@@ -41,9 +48,9 @@ public class BalloonController : MonoBehaviour {
         if (xDown && xWasDown == false)
         {
             xWasDown = true;
-            if (goldBarCount > 0)
+            if (goldBars > 0)
             {
-                goldBarCount--;
+                goldBars--;
                 Instantiate(fallingObject, fallingObjectSpawnLocation.position, Quaternion.identity);
             }
         }
@@ -57,7 +64,7 @@ public class BalloonController : MonoBehaviour {
         if (other.gameObject.CompareTag("GoldenBar"))
         {
             other.gameObject.SetActive(false);
-            goldBarCount++;
+            goldBars++;
         }
     }
 
@@ -66,7 +73,11 @@ public class BalloonController : MonoBehaviour {
         if (other.gameObject.tag == "GoldenBar")
         {
             other.gameObject.SetActive(false);
-            goldBarCount++;
+            goldBars++;
+        }
+        else if (other.gameObject.tag == "Mountain")
+        {
+            health -= 20;
         }
     }
 }
