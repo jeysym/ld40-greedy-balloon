@@ -81,13 +81,13 @@ public class BalloonController : MonoBehaviour {
 
 			if (xDown == false)
 				xWasDown = false;
-			/*
+			
 			if (health <= 0)
 			{
 				Instantiate(explosionEffect, transform.position, Quaternion.identity);
 				Death();
 			}
-			*/
+
 		}
         
     }
@@ -112,6 +112,7 @@ public class BalloonController : MonoBehaviour {
         }
         else if (other.gameObject.tag == "Mountain")
         {
+			
 			float velocity = other.relativeVelocity.magnitude;
 			float f;
 			if (velocity < 1.6f) {

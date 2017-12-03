@@ -1173,6 +1173,8 @@ MonoBehaviour:
   goldBarMass: 0.05
   hSpeed: 8
   vSpeed: 15
+  velocityImpact: 2
+  birdImpact: 10
 --- !u!212 &212130341275541970
 SpriteRenderer:
   m_ObjectHideFlags: 1
