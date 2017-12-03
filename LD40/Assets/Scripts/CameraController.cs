@@ -31,7 +31,9 @@ public class CameraController : MonoBehaviour {
     public GameObject[] cloudFormations;
     public float cloudFormationsHeight;
 
-    void trySpawnMountainsAndClouds()
+	public GameObject goldBar;
+
+    void trySpawnMountainsAndCloudsAndGoldBar()
     {
         float x = transform.position.x;
         if (x > xSpawnThreshold)
@@ -44,7 +46,18 @@ public class CameraController : MonoBehaviour {
             int j = (int)Random.Range(0.0f, (float)cloudFormations.Length);
 
             Instantiate(mountainRanges[i], spawnPlace, Quaternion.identity);
-            Instantiate(cloudFormations[i], cloudFormSpawnPlace, Quaternion.identity);
+            Instantiate(cloudFormations[j], cloudFormSpawnPlace, Quaternion.identity);
+
+			float y = Random.Range(birdsLow,birdsHigh+1.0f);
+			float x1 = spawnX + Random.Range(0.0f, mountainRangeWidth);
+			float x2 = spawnX + Random.Range(0.0f, mountainRangeWidth);
+			float x3 = spawnX + Random.Range(0.0f, mountainRangeWidth);
+			Vector3 goldBarSpawnPlace1 = new Vector3 (x1, y, 0.0f);
+			Vector3 goldBarSpawnPlace2 = new Vector3 (x2, y, 0.0f);
+			Vector3 goldBarSpawnPlace3 = new Vector3 (x3, y, 0.0f);
+			Instantiate (goldBar, goldBarSpawnPlace1, Quaternion.identity);
+			Instantiate (goldBar, goldBarSpawnPlace2, Quaternion.identity);
+			Instantiate (goldBar, goldBarSpawnPlace3, Quaternion.identity);
 
             xSpawnThreshold += mountainRangeWidth;
         }
@@ -65,7 +78,7 @@ public class CameraController : MonoBehaviour {
     void Update()
     {
         wall.transform.position = transform.position - new Vector3(cameraHalfwidth, 0.0f);
-        trySpawnMountainsAndClouds();
+        trySpawnMountainsAndCloudsAndGoldBar();
     }
 
 	// LateUpdate is called after Update each frame
