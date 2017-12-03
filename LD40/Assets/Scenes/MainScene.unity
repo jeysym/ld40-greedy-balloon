@@ -815,6 +815,30 @@ Prefab:
       propertyPath: goldBarCountText
       value: 
       objectReference: {fileID: 216321398}
+    - target: {fileID: 4262524274949930, guid: e2c9c886709b6264d96eb05481bfaa79, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -6.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 4262524274949930, guid: e2c9c886709b6264d96eb05481bfaa79, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -4.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114078788888115592, guid: e2c9c886709b6264d96eb05481bfaa79,
+        type: 2}
+      propertyPath: fallingObjectTorque
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 114078788888115592, guid: e2c9c886709b6264d96eb05481bfaa79,
+        type: 2}
+      propertyPath: goldBars
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114078788888115592, guid: e2c9c886709b6264d96eb05481bfaa79,
+        type: 2}
+      propertyPath: explosionEffect
+      value: 
+      objectReference: {fileID: 4209069937256224, guid: a33094c92d742f7459b0672dcefb29b1,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e2c9c886709b6264d96eb05481bfaa79, type: 2}
   m_IsPrefabParent: 0
