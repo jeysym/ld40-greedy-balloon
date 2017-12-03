@@ -28,7 +28,7 @@ public class BalloonController : MonoBehaviour {
 	public float velocityImpact;
 	public int birdImpact;
 
-    private bool xWasDown = false;
+    private bool goldBarThrown = false;
     private Rigidbody2D rb;
 	private PolygonCollider2D pcol;
 	private Rigidbody2D[] rbs;
@@ -58,7 +58,7 @@ public class BalloonController : MonoBehaviour {
 
 			float hAxis = Input.GetAxis("Horizontal");
 			float burn = Input.GetAxis("Burn");
-			bool xDown = Input.GetKey(KeyCode.X);
+			float throwGoldBar = Input.GetAxis("Throw");
 
 			float maxVForce = vSpeed;
 			float maxHForce = hSpeed * hAxis;
@@ -84,9 +84,9 @@ public class BalloonController : MonoBehaviour {
 
 			rb.AddForce(new Vector2(1.0f, 0.0f) * maxHForce);
 
-			if (xDown && xWasDown == false)
+			if (throwGoldBar > 0 && goldBarThrown == false)
 			{
-				xWasDown = true;
+				goldBarThrown = true;
 				if (goldBars > 0)
 				{
 					goldBars--;
@@ -101,8 +101,8 @@ public class BalloonController : MonoBehaviour {
 				}
 			}
 
-			if (xDown == false)
-				xWasDown = false;
+			if (throwGoldBar == 0.0f)
+				goldBarThrown = false;
 			
 			if (health <= 0)
 			{
