@@ -20,10 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4660871821608956}
   - component: {fileID: 212509044555187242}
-  - component: {fileID: 60616493002017168}
   m_Layer: 0
   m_Name: mountain02
-  m_TagString: Untagged
+  m_TagString: Mountain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,57 +40,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &60616493002017168
-PolygonCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1151815067374036}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 1
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.43, y: 2.99}
-    newSize: {x: 3.43, y: 2.99}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 1.395, y: -0.865}
-      - {x: 1.355, y: -0.79499996}
-      - {x: 1.235, y: -0.675}
-      - {x: 1.135, y: -0.435}
-      - {x: 1.055, y: -0.255}
-      - {x: 0.875, y: -0.085}
-      - {x: 0.72499996, y: -0.005}
-      - {x: 0.53499997, y: 0.385}
-      - {x: 0.405, y: 0.59499997}
-      - {x: 0.325, y: 0.675}
-      - {x: 0.275, y: 0.695}
-      - {x: 0.095, y: 0.705}
-      - {x: -0.13499999, y: 0.875}
-      - {x: -0.345, y: 0.875}
-      - {x: -0.45499998, y: 0.79499996}
-      - {x: -0.635, y: 0.585}
-      - {x: -0.825, y: 0.155}
-      - {x: -1.095, y: -0.375}
-      - {x: -1.2149999, y: -0.555}
-      - {x: -1.3349999, y: -0.775}
-      - {x: -1.615, y: -1.185}
-      - {x: -1.675, y: -1.235}
-      - {x: -1.7149999, y: -1.265}
-      - {x: -1.7149999, y: -1.495}
-      - {x: 1.7149999, y: -1.495}
-      - {x: 1.7149999, y: -1.295}
-      - {x: 1.4549999, y: -1.0649999}
 --- !u!212 &212509044555187242
 SpriteRenderer:
   m_ObjectHideFlags: 1

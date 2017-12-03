@@ -26,18 +26,25 @@ public class CameraController : MonoBehaviour {
     private float mountainRangeWidth = 100.0f;
     private float xSpawnThreshold = -60.0f;
 
-    void Update()
+    void trySpawnMountain()
     {
-        wall.transform.position = transform.position - new Vector3(cameraHalfwidth, 0.0f);
-
         float x = transform.position.x;
         if (x > xSpawnThreshold)
         {
             float spawnX = xSpawnThreshold + mountainRangeWidth;
             Vector3 spawnPlace = new Vector3(spawnX, 0.0f, 0.0f);
-            Instantiate(mountainRanges[0], spawnPlace, Quaternion.identity);
+
+            int i = (int)Random.Range(0.0f, (float)mountainRanges.Length);
+
+            Instantiate(mountainRanges[i], spawnPlace, Quaternion.identity);
             xSpawnThreshold += mountainRangeWidth;
         }
+    }
+
+    void Update()
+    {
+        wall.transform.position = transform.position - new Vector3(cameraHalfwidth, 0.0f);
+        trySpawnMountain();
     }
 
 	// LateUpdate is called after Update each frame
