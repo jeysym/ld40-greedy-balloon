@@ -7,6 +7,8 @@ public class BirdController : MonoBehaviour {
 	public float speed;
 	public GameObject Wall;
 
+	public AudioSource GoldBirdCollision;
+
 	private bool living;
 
 	// Use this for initialization
@@ -35,6 +37,9 @@ public class BirdController : MonoBehaviour {
 
 		if ((other.gameObject.tag == "Player")||(other.gameObject.tag == "GoldenBar"))
 		{
+			if (other.gameObject.tag == "GoldenBar") {
+				GoldBirdCollision.Play ();
+			}
 			living = false;
 			PolygonCollider2D BirdCollider = GetComponent<PolygonCollider2D> ();
 			BirdCollider.enabled = false;

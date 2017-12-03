@@ -36,6 +36,13 @@ public class BalloonController : MonoBehaviour {
 
 	private bool dead;
 
+	public AudioSource LowVelocityCollision;
+	public AudioSource HighVelocityCollision;
+	public AudioSource DeathSound;
+	public AudioSource BurnerOn;
+	public AudioSource GoldPickUp;
+	public AudioSource BirdCollision;
+	public AudioSource ThrowGoldAway;
 
     // Use this for initialization
     void Start () {
@@ -67,6 +74,7 @@ public class BalloonController : MonoBehaviour {
 			{
                 if (burnOn == false)
                 {
+					BurnerOn.Play ();
                     fireSystem.Play();
                     burnOn = true;
                 }
@@ -89,6 +97,7 @@ public class BalloonController : MonoBehaviour {
 				goldBarThrown = true;
 				if (goldBars > 0)
 				{
+					ThrowGoldAway.Play ();
 					goldBars--;
 					rb.mass -= goldBarMass;
 					Transform fallingInstance = Instantiate(fallingObject, fallingObjectSpawnLocation.position, Quaternion.identity);
@@ -119,6 +128,7 @@ public class BalloonController : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("GoldenBar"))
         {
+			GoldPickUp.Play ();
             other.gameObject.SetActive(false);
             goldBars++;
 			rb.mass += goldBarMass;
@@ -129,6 +139,7 @@ public class BalloonController : MonoBehaviour {
     {
         if (other.gameObject.tag == "GoldenBar")
         {
+			GoldPickUp.Play ();
             other.gameObject.SetActive(false);
             goldBars++;
 			rb.mass += goldBarMass;
@@ -139,14 +150,19 @@ public class BalloonController : MonoBehaviour {
 			float velocity = other.relativeVelocity.magnitude;
 			float f;
 			if (velocity < 1.6f) {
+				LowVelocityCollision.Play ();
 				f = 0.3f * velocity;
 			} else if (velocity < 3.5f) {
+				LowVelocityCollision.Play ();
 				f = 0.7f * velocity;
 			} else if (velocity < 5.0f) {
+				LowVelocityCollision.Play ();
 				f = 1.0f * velocity;
 			} else if (velocity < 10.0f) {
+				LowVelocityCollision.Play ();
 				f = 1.5f * velocity;
 			} else {
+				HighVelocityCollision.Play ();
 				f = 2.0f * velocity;
 			}
 
@@ -154,12 +170,14 @@ public class BalloonController : MonoBehaviour {
         }
         else if (other.gameObject.tag == "Bird")
         {
+			BirdCollision.Play ();
             health -= birdImpact;
         }
     }
 
 	void Death()
 	{
+		DeathSound.Play ();
 		Destroy(rb);
 		Destroy (pcol);
 
