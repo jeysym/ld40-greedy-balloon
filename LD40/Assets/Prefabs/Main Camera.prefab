@@ -104,6 +104,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  cloudFormations: []
+  cloudFormationsHeight: 0
+  goldBar: {fileID: 0}
   bird: {fileID: 0}
   birdsLow: 3
   birdsHigh: 12

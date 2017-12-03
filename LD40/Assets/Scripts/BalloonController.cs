@@ -199,10 +199,6 @@ public class BalloonController : MonoBehaviour {
 		dead = true;
 
 		StartCoroutine(Reset());
-
-
-
-
 	}
 
 	IEnumerator Reset()
