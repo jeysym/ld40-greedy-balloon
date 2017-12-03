@@ -107,6 +107,7 @@ public class BalloonController : MonoBehaviour {
 			if (health <= 0)
 			{
 				Instantiate(explosionEffect, transform.position, Quaternion.identity);
+				fireSystem.Stop();
 				Death();
 			}
 
