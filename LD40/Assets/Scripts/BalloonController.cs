@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BalloonController : MonoBehaviour {
 
@@ -149,6 +150,17 @@ public class BalloonController : MonoBehaviour {
 
 		dead = true;
 
+		StartCoroutine(Reset());
+
+
+
+
+	}
+
+	IEnumerator Reset()
+	{
+		yield return new WaitForSeconds(5);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 		
 }
