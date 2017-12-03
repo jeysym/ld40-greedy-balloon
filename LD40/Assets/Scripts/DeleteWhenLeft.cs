@@ -14,7 +14,7 @@ public class DeleteWhenLeft : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (transform.position.z == -1)
+        if (transform.position.z == -1.0f)
             return;
 
         float deltaX = transform.position.x - wallOfDeath.transform.position.x;
