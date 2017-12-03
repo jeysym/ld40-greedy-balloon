@@ -311,19 +311,6 @@ Prefab:
       propertyPath: goldBarCountText
       value: 
       objectReference: {fileID: 216321398}
-    - target: {fileID: 4262524274949930, guid: e2c9c886709b6264d96eb05481bfaa79, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -6.86
-      objectReference: {fileID: 0}
-    - target: {fileID: 4262524274949930, guid: e2c9c886709b6264d96eb05481bfaa79, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -4.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114078788888115592, guid: e2c9c886709b6264d96eb05481bfaa79,
-        type: 2}
-      propertyPath: goldBars
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 114078788888115592, guid: e2c9c886709b6264d96eb05481bfaa79,
         type: 2}
       propertyPath: LowVelocityCollision
@@ -429,12 +416,12 @@ Prefab:
     - target: {fileID: 224760171439130886, guid: 8718919ac8cd2b542836876882df9734,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 479
+      value: 484
       objectReference: {fileID: 0}
     - target: {fileID: 224760171439130886, guid: 8718919ac8cd2b542836876882df9734,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 123.5
+      value: 126.5
       objectReference: {fileID: 0}
     - target: {fileID: 224760171439130886, guid: 8718919ac8cd2b542836876882df9734,
         type: 2}
