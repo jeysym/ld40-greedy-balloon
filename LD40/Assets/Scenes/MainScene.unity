@@ -986,6 +986,11 @@ Prefab:
       propertyPath: goldBar
       value: 
       objectReference: {fileID: 1700388545}
+    - target: {fileID: 20782842236948070, guid: 9dd68d4c133657a409fa0c7ae4dacb58,
+        type: 2}
+      propertyPath: orthographic size
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9dd68d4c133657a409fa0c7ae4dacb58, type: 2}
   m_IsPrefabParent: 0
