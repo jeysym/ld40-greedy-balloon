@@ -44,6 +44,9 @@ public class BalloonController : MonoBehaviour {
 	public AudioSource BirdCollision;
 	public AudioSource ThrowGoldAway;
 
+	public GameObject MainCamera;
+	private bool CameraOn;
+
     // Use this for initialization
     void Start () {
         fireSystem = fireParticles.GetComponent<ParticleSystem>();
@@ -54,6 +57,7 @@ public class BalloonController : MonoBehaviour {
 		pcols = gameObject.GetComponentsInChildren<PolygonCollider2D>();
 		rb.mass = 1.0f;
 		dead = false;
+		CameraOn = false;
 	}
 
 
@@ -70,7 +74,11 @@ public class BalloonController : MonoBehaviour {
 			float maxVForce = vSpeed;
 			float maxHForce = hSpeed * hAxis;
 
-			if (burn > 0)
+			if (!CameraOn) {
+				CameraOn = MainCamera.GetComponent<Camera>().enabled;
+			}
+
+			if ((burn > 0)&&(CameraOn))
 			{
                 if (burnOn == false)
                 {
