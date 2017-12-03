@@ -104,6 +104,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  bird: {fileID: 0}
+  birdsLow: 3
+  birdsHigh: 12
+  birdSpawnTime: 0.5
 --- !u!124 &124661957002137208
 Behaviour:
   m_ObjectHideFlags: 1

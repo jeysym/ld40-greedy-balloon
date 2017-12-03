@@ -28,17 +28,24 @@ public class CameraController : MonoBehaviour {
     private float mountainRangeWidth = 100.0f;
     private float xSpawnThreshold = -60.0f;
 
-    void trySpawnMountain()
+    public GameObject[] cloudFormations;
+    public float cloudFormationsHeight;
+
+    void trySpawnMountainsAndClouds()
     {
         float x = transform.position.x;
         if (x > xSpawnThreshold)
         {
             float spawnX = xSpawnThreshold + mountainRangeWidth;
             Vector3 spawnPlace = new Vector3(spawnX, 0.0f, 0.0f);
+            Vector3 cloudFormSpawnPlace = new Vector3(spawnX, cloudFormationsHeight, 0.0f);
 
             int i = (int)Random.Range(0.0f, (float)mountainRanges.Length);
+            int j = (int)Random.Range(0.0f, (float)cloudFormations.Length);
 
             Instantiate(mountainRanges[i], spawnPlace, Quaternion.identity);
+            Instantiate(cloudFormations[i], cloudFormSpawnPlace, Quaternion.identity);
+
             xSpawnThreshold += mountainRangeWidth;
         }
     }
@@ -58,7 +65,7 @@ public class CameraController : MonoBehaviour {
     void Update()
     {
         wall.transform.position = transform.position - new Vector3(cameraHalfwidth, 0.0f);
-        trySpawnMountain();
+        trySpawnMountainsAndClouds();
     }
 
 	// LateUpdate is called after Update each frame
