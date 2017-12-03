@@ -21,30 +21,24 @@ public class CameraController : MonoBehaviour {
         cameraHalfwidth = cameraComponent.aspect * cameraComponent.orthographicSize;
     }
 
+    public GameObject[] mountainRanges;
+    private float mountainRangeStart = 40.0f;
+    private float mountainRangeWidth = 100.0f;
+    private float xSpawnThreshold = -60.0f;
+
     void Update()
     {
         wall.transform.position = transform.position - new Vector3(cameraHalfwidth, 0.0f);
+
+        float x = transform.position.x;
+        if (x > xSpawnThreshold)
+        {
+            float spawnX = xSpawnThreshold + mountainRangeWidth;
+            Vector3 spawnPlace = new Vector3(spawnX, 0.0f, 0.0f);
+            Instantiate(mountainRanges[0], spawnPlace, Quaternion.identity);
+            xSpawnThreshold += mountainRangeWidth;
+        }
     }
-
-    //void OnDrawGizmos()
-    //{
-    //    Vector3 cameraCenter = transform.position;
-
-    //    Gizmos.color = Color.blue;
-    //    Gizmos.DrawLine(transform.position, transform.position - new Vector3(cameraHalfwidth, 0.0f));
-
-    //    float yCameraTop = transform.position.y + cameraComponent.orthographicSize;
-    //    float yCameraBottom = transform.position.y - cameraComponent.orthographicSize;
-
-    //    float yTopThreshold = yCameraTop - (chaseV * 2 * cameraComponent.orthographicSize);
-    //    float yBottomThreshold = yCameraBottom + (chaseV * 2 * cameraComponent.orthographicSize);
-
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, yTopThreshold));
-
-    //    Gizmos.color = Color.magenta;
-    //    Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, yBottomThreshold));
-    //}
 
 	// LateUpdate is called after Update each frame
 	void LateUpdate () 
