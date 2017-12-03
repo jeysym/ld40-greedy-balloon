@@ -98,8 +98,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balloon: {fileID: 0}
   chaseH: 0.7
-  chaseV: 0.3
+  chaseV: 0.45
   wall: {fileID: 0}
+  mountainRanges:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!124 &124661957002137208
 Behaviour:
   m_ObjectHideFlags: 1

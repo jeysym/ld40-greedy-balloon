@@ -19,6 +19,8 @@ public class CameraController : MonoBehaviour {
 	void Start () {
         cameraComponent = GetComponent<Camera>();
         cameraHalfwidth = cameraComponent.aspect * cameraComponent.orthographicSize;
+
+        InvokeRepeating("SpawnBird", birdSpawnTime, birdSpawnTime);
     }
 
     public GameObject[] mountainRanges;
@@ -39,6 +41,18 @@ public class CameraController : MonoBehaviour {
             Instantiate(mountainRanges[i], spawnPlace, Quaternion.identity);
             xSpawnThreshold += mountainRangeWidth;
         }
+    }
+
+    public GameObject bird;
+    public float birdsLow;
+    public float birdsHigh;
+    public float birdSpawnTime;
+
+    void SpawnBird()
+    {
+        float y = Random.Range(birdsLow, birdsHigh + 1.0f);
+        Vector3 spawnPosition = new Vector3(transform.position.x + cameraHalfwidth + 5, y, 0.0f);
+        Instantiate(bird, spawnPosition, Quaternion.identity);
     }
 
     void Update()
