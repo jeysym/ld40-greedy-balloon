@@ -19,32 +19,47 @@ public class CameraController : MonoBehaviour {
 	void Start () {
         cameraComponent = GetComponent<Camera>();
         cameraHalfwidth = cameraComponent.aspect * cameraComponent.orthographicSize;
+
+        InvokeRepeating("SpawnBird", birdSpawnTime, birdSpawnTime);
+    }
+
+    public GameObject[] mountainRanges;
+    private float mountainRangeStart = 40.0f;
+    private float mountainRangeWidth = 100.0f;
+    private float xSpawnThreshold = -60.0f;
+
+    void trySpawnMountain()
+    {
+        float x = transform.position.x;
+        if (x > xSpawnThreshold)
+        {
+            float spawnX = xSpawnThreshold + mountainRangeWidth;
+            Vector3 spawnPlace = new Vector3(spawnX, 0.0f, 0.0f);
+
+            int i = (int)Random.Range(0.0f, (float)mountainRanges.Length);
+
+            Instantiate(mountainRanges[i], spawnPlace, Quaternion.identity);
+            xSpawnThreshold += mountainRangeWidth;
+        }
+    }
+
+    public GameObject bird;
+    public float birdsLow;
+    public float birdsHigh;
+    public float birdSpawnTime;
+
+    void SpawnBird()
+    {
+        float y = Random.Range(birdsLow, birdsHigh + 1.0f);
+        Vector3 spawnPosition = new Vector3(transform.position.x + cameraHalfwidth + 5, y, 0.0f);
+        Instantiate(bird, spawnPosition, Quaternion.identity);
     }
 
     void Update()
     {
         wall.transform.position = transform.position - new Vector3(cameraHalfwidth, 0.0f);
+        trySpawnMountain();
     }
-
-    //void OnDrawGizmos()
-    //{
-    //    Vector3 cameraCenter = transform.position;
-
-    //    Gizmos.color = Color.blue;
-    //    Gizmos.DrawLine(transform.position, transform.position - new Vector3(cameraHalfwidth, 0.0f));
-
-    //    float yCameraTop = transform.position.y + cameraComponent.orthographicSize;
-    //    float yCameraBottom = transform.position.y - cameraComponent.orthographicSize;
-
-    //    float yTopThreshold = yCameraTop - (chaseV * 2 * cameraComponent.orthographicSize);
-    //    float yBottomThreshold = yCameraBottom + (chaseV * 2 * cameraComponent.orthographicSize);
-
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, yTopThreshold));
-
-    //    Gizmos.color = Color.magenta;
-    //    Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, yBottomThreshold));
-    //}
 
 	// LateUpdate is called after Update each frame
 	void LateUpdate () 

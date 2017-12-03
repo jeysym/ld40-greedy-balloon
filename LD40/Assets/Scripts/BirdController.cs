@@ -19,7 +19,7 @@ public class BirdController : MonoBehaviour {
 	{
 		if (living) {
 			transform.position += new Vector3 (-Time.deltaTime * speed, 0.0f);
-			if ((transform.position.x - Wall.transform.position.x) < 0) {
+			if ((transform.position.x - Wall.transform.position.x) < -5 && (transform.position.z != -1)) {
 				Destroy (this.gameObject);
 			}
 		} else {
