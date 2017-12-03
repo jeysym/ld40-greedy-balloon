@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class BalloonController : MonoBehaviour {
 
+    public Transform fireParticles;
+    private ParticleSystem fireSystem;
+    bool burnOn = false;
+
     public Text hpCountText;
     public Text goldBarCountText;
 
@@ -35,6 +39,8 @@ public class BalloonController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        fireSystem = fireParticles.GetComponent<ParticleSystem>();
+
 		rb = gameObject.GetComponent<Rigidbody2D>();
 		pcol = gameObject.GetComponent<PolygonCollider2D> ();
 		rbs = gameObject.GetComponentsInChildren<Rigidbody2D> ();
@@ -59,8 +65,23 @@ public class BalloonController : MonoBehaviour {
 
 			if (burn > 0)
 			{
+                if (burnOn == false)
+                {
+                    fireSystem.Play();
+                    burnOn = true;
+                }
+
 				rb.AddForce(new Vector2(0.0f, 1.0f) * maxVForce);
 			}
+            else
+            {
+                if (burnOn == true)
+                {
+                    fireSystem.Stop();
+                    burnOn = false;
+                }
+            }
+
 			rb.AddForce(new Vector2(1.0f, 0.0f) * maxHForce);
 
 			if (xDown && xWasDown == false)
